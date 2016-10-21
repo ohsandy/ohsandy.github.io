@@ -1,0 +1,223 @@
+html{
+    width: 100%;
+    height: 100%;
+    body{
+        font-family: 'Sarala', 'Helvetica', sans-serif;
+        margin: 0;
+        height: 100%;
+    }
+}
+
+*{
+    box-sizing: border-box;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 800;
+    &.sticky {}
+    a.modal-link {}
+    
+    a.nav-link{
+        font-family: 'Sarala', 'comic sans', sans-serif;
+        color: blue;
+        text-decoration: none;
+        display: inline-block;
+      //  border-bottom: 2px solid;
+       /* &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          display: inline-block;
+          height: 1em;
+          width: 100%;
+          border-bottom: 2px solid;
+          margin-top: 5px;
+        }*/
+
+        //transform-origin: center;
+        
+        &.why > span{
+            display: inline-block;
+            //transform: rotate(360deg - 120deg);            
+            transform: rotate(60deg);
+        }
+        
+        &.who > span{
+            display: inline-block;
+           // transform: rotate(120deg);            
+           transform: rotate(360deg - 60deg);
+        }
+        line-height: 1;
+    }
+    $whowhy-padding: 0.5em;
+    
+    
+    div.who, div.why{
+        position: fixed;
+        padding-top: 0.75em;    
+        z-index: 820;
+    }
+    div.who{
+        top: 0.2em;
+        left: 0.2em;     
+    }
+    
+    div.why{
+        top: 0.2em;
+        right: 0.2em;
+    }
+}
+
+
+.full {
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+
+div.modal {
+    display: none; 
+    $bg-color:  lighten(transparentize(desaturate(antiquewhite, 30%), 1.0 - 0.9), 9%);
+    background-color: $bg-color;
+    overflow-y: scroll;
+    article {
+        display: none;        
+    }
+    &.active {
+        display: block;
+        z-index: 720;
+        &.who {
+            article#who {
+                display: block;
+            }
+        }
+        &.why {
+            article#why {
+                display: block;
+            }
+        }
+    }
+    nav {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        z-index: 730;
+        bottom: 0;
+        left: 0;                
+        height: 4em;
+        $alpha: alpha($bg-color) + 0.05;
+        --alpha: $alpha;
+        background-color: transparentize($bg-color, 1 - ($alpha));
+        svg.close{
+            width: 1.125em;
+            height: 1.125em;   
+            padding: 0; 
+            display: block;
+            overflow: hidden;            
+        }
+        
+        
+        a.close-ico{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+        }
+        
+        width: 100%;
+    }
+    
+    padding-bottom: 4em;
+}
+
+.icon {
+    display: inline-block;    
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+div.flasher {
+    z-index: 900;
+    display: none;
+}
+
+
+.container-content{
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1.75em;
+    padding-left: 1.55em;//1.95em;
+    padding-right: 1.55em;//1.65em
+}
+
+
+@media screen and (max-width: 320px){
+    html{
+        body{
+            font-size: 0.9em;
+        }
+    }
+    
+    .container-content{
+        font-size: 0.9em;
+        padding-left: 2.25em;
+    }
+}
+
+@media screen and (max-width: 425px){
+    .container-content{        
+        padding-left: 2.3em;
+        //padding-right: 1.65em;
+    }
+}
+
+@media screen and (min-width: 638px){
+    .at-dp-left, .at-dp-right{
+        margin-left: 2.3em;
+    }    
+    article.main{
+        margin-top: 19px;
+    }
+}
+
+
+@media screen and (min-width: 769px){
+    div.pm{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;        
+    }
+    article.main{
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .at-dp-left{
+        margin-right: 2.3em;
+    }
+    .at-dp-right{
+        position: relative;
+        left: 50%;
+        max-width: 600px;
+        padding-left: 0;
+        width: 50%;        
+        margin-right: 1.55em;
+    }    
+}
+
+@media screen and (max-width: 1024px){
+    .container-content{
+        font-size: 0.9em;
+    }
+}
